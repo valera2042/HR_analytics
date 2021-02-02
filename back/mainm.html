@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+
+<body>
+ <div class="login">
+	<h1>HR analytics: Will a Data Scientist leave your company?<h1>
+	<h1>
+	<h1>	
+	<h2>Please enter the following candidate information:
+	<h2>1. city_development_index: please insert the city development index of the candidate city in the range from 0.0 to 1.0<h2>  
+	<h2>2. enrolled_university please insert 0 for full time, 1 for part time and 2 for no enrollment<h2>
+	<h2>3. relevent_experience: please insert 0 if you have relevant experience and 1 you do not have relevant experience<h2>
+	<h2>4. last_new_job: please insert the number of years gap between this job and the previous one:<h2>
+    	<h3>insert 0 for 1 year<h3>
+    	<h3>insert 1 for 0 years<h3>
+    	<h3>insert 2 for 2 years<h3>
+    	<h3>insert 4 for3 for 3 years<h3>
+    	<h3>insert 5 for more than 4 years <h3>
+	
+	
+<head>
+    <title>HR analytics:
+    </title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        city_development_index:
+        <input name="city_development_index" type="float" required>
+        <br>
+        <br> enrolled_university:
+        <input name="enrolled_university" type="number" required>
+        <br>
+        <br> relevent_experience:
+        <input name="relevent_experience" type="number" required>
+        <br>
+        <br> last_new_job:
+        <input name="last_new_job" type="number" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> Will the employee leave the job? (yes:1, no:0):
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</html>
