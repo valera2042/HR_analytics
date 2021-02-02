@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify, render_template
 # Use pickle to load in the pre-trained model
 
 app = flask.Flask(__name__)
-with open(f'model/HRready.pkl', 'rb') as f:
+with open(f'model/Hready.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Initialise the Flask app
@@ -27,6 +27,7 @@ def main():
         enrolled_university = flask.request.form['enrolled_university']
         relevent_experience = flask.request.form['relevent_experience']
         last_new_job = flask.request.form['last_new_job']
+        company_size = flask.request.form['company_size']
 
         # Make DataFrame for model
         #input_variables = pd.DataFrame([[city_development_index, enrolled_university, relevent_experience, last_new_job]],
@@ -47,7 +48,8 @@ def main():
                                      original_input={'city_development_index':city_development_index,
                                                      'enrolled_university':enrolled_university,
                                                      'relevent_experience':relevent_experience,
-                                                     'last_new_job' : last_new_job},
+                                                     'last_new_job' : last_new_job,
+                                                     'company_size' : company_size},
                                      result=prediction,
                                      )
 

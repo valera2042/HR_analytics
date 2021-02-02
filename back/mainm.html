@@ -19,17 +19,23 @@ form {
 	<h1>HR analytics: Will a Data Scientist leave your company?<h1>
 	<h1>
 	<h1>	
-	<h2>Please enter the following information:
+	<h2>Please enter the following candidate information:
 	<h2>1. city_development_index: please insert the city development index of the candidate city in the range from 0.0 to 1.0<h2>  
-	<h2>2. enrolled_university: please insert 0 if a candidate enrolled into for full time, 1 for part time and 2 for no enrollment<h2>
-	<h2>3. relevent_experience: please insert 0 if a candidate has relevant experience and 1 if  a candidate does not have relevant experience<h2>
-	<h2>4. last_new_job: please insert the number of years gap between this job and the candidate's previous one:<h2>
+	<h2>2. enrolled_university please insert 0 for full time, 1 for part time and 2 for no enrollment<h2>
+	<h2>3. relevent_experience: please insert 0 if you have relevant experience and 1 you do not have relevant experience<h2>
+	<h2>4. last_new_job: please insert the number of years gap between this job and the previous one:<h2>
     	<h3>insert 0 for 1 year<h3>
     	<h3>insert 1 for 0 years<h3>
     	<h3>insert 2 for 2 years<h3>
     	<h3>insert 4 for3 for 3 years<h3>
     	<h3>insert 5 for more than 4 years <h3>
-	
+    <h2>5. company_size: please insert the company size:
+        <h3>insert 0 for a company with less than 10000 employees<h3
+    	<h3>insert 1 for a company with less than 1000 employees<h3
+    	<h3>insert 3 for a company with less than 10 employees<h3>
+    	<h3>insert 4 if you do not know that<h3>
+    	<h3>insert 5 for a company with less than 100 employees<h3>
+
 	
 <head>
     <title>HR analytics:
@@ -50,6 +56,8 @@ form {
         <br> last_new_job:
         <input name="last_new_job" type="number" required>
         <br>
+        <br> company_size:
+        <input name="company_size" type="number" required>
         <br>
         <input type="submit">
     </fieldset>
@@ -61,7 +69,7 @@ form {
     		<b>{{ variable }}</b> : {{ value }}
     	{% endfor %}
 		<br>
-    	<br> Will this employee leave the job? (yes:1, no:0):
+    	<br> Will the employee leave the job? (yes:1, no:0):
    		<p style="font-size:50px">{{ result }}</p>
     {% endif %}
 </div>
